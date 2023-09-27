@@ -1,9 +1,19 @@
 import json, requests
-def Start(session: requests.Session, email: str, password: str) -> str:
+
+
+def Start(session: requests.Session, email: str, password: str) -> tuple:
     fingerprint = Fingerprint(session)
     Cookies(session)
-    Login(session, email, password, fingerprint)
+    token = Login(session, email, password, fingerprint)
+    return (fingerprint, token)
+
+def StartWithToken(session: requests.Session) -> str:
+    fingerprint = Fingerprint(session)
+    Cookies(session)
+    if (getUsername() == None):
+        return None
     return fingerprint
+
 def Fingerprint(session: requests.Session):
     headers = {
         'Accept': '*/*',
@@ -24,12 +34,16 @@ def Fingerprint(session: requests.Session):
         return data["fingerprint"]
     else:
         return None
+
+
 def Cookies(session: requests.Session):
     r = session.get("https://discord.com")
     if "Grab a seat in a voice channel" in r.text:
         return 200
     else:
         return 404
+
+
 def Login(session: requests.Session, email: str, password: str, fingerprint: str):
     headers = {
         "authority": "discord.com",
@@ -68,3 +82,7 @@ def Login(session: requests.Session, email: str, password: str, fingerprint: str
             return "Ratelimit", r.json()['retry_after']
         else:
             return "Couldn't recieve Token because of unkown error", r.text
+
+def getUsername(session: requests.Session, token: str) -> str:
+    #Get Username
+    return None
