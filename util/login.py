@@ -89,4 +89,10 @@ def Login(session: requests.Session, email: str, password: str, fingerprint: str
 
 def getUsername(session: requests.Session, token: str) -> str:
     # Get Username
+    h = {"Authorization": token}
+    r = session.get("https://discord.com/api/v9/users/@me", headers=h)
+    if r.status_code == 200:
+        return r.json()['username']
+    elif r.status_code == 401:
+        return "Token not Authorization"
     return "None"
