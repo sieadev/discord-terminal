@@ -5,14 +5,17 @@ def Start(session: requests.Session, email: str, password: str) -> tuple:
     fingerprint = Fingerprint(session)
     Cookies(session)
     token = Login(session, email, password, fingerprint)
-    return (fingerprint, token)
+    return fingerprint, token
 
-def StartWithToken(session: requests.Session) -> str:
+
+def StartWithToken(session: requests.Session, token: str) -> str:
     fingerprint = Fingerprint(session)
     Cookies(session)
-    if (getUsername() == None):
-        return None
-    return fingerprint
+    if getUsername(session, token) is "None":
+        return "None"
+    else:
+        return fingerprint
+
 
 def Fingerprint(session: requests.Session):
     headers = {
@@ -83,6 +86,7 @@ def Login(session: requests.Session, email: str, password: str, fingerprint: str
         else:
             return "Couldn't recieve Token because of unkown error", r.text
 
+
 def getUsername(session: requests.Session, token: str) -> str:
-    #Get Username
-    return None
+    # Get Username
+    return "None"
