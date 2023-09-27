@@ -3,6 +3,8 @@
 <h1>Discord-Terminal</h1>
 <p>Discord-Terminal is a command-line interface tool powered by Discord's API</p>
 
+<p>FOR EDUCATIONAL PURPOSES ONLY</p>
+
 <h4> <span> · </span> <a href="https://github.com/sieadev/discord-terminal"> Documentation </a> <span> · </span> <a href="https://github.com/sieadev/discord-terminal/issues"> Report Bug </a> <span> · </span> <a href="https://github.com/sieadev/discord-terminal/issues"> Request Feature </a> </h4>
 
 
