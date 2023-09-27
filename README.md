@@ -14,10 +14,11 @@
 
 
 ### :dart: Features
-
+- ✔️Completly API based
 - ✔️Send Messages
 - ✔️Send Friend Requests
 - ✔️Join Servers
+- ✔️Legitimate Login
 - ❌Voice Channels / / Streaming
 ### 🏃 Run Locally
 
